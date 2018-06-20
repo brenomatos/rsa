@@ -1,3 +1,5 @@
+from random import randint
+
 def exp_rapida(b,e,n):
     r = 1
     b = b%n
@@ -33,7 +35,7 @@ def fatora(n):#usado para fatorar um n-1 em potencia de dois em miller
     q = int(n) #apenas para padronizar as variaveis
     return (t,q)#retorna o o numero fatorado em base 2 x parte prima
 
-def miller(a,n,n1,t,q):
+def talvez_primo(a,n,n1,t,q):
     x=exp_rapida(a,q,n)
     if x==1 or x==-1:
         return 1
@@ -44,12 +46,18 @@ def miller(a,n,n1,t,q):
         t-=1
     return 0
 
-t,q = fatora(340)
-print(miller(3,341,340,t,q))
+
+def provavelmente_primo(iter, n):
+    for i in range(0,iter):
+        print(randint(2,n-1))
 
 
 
 
+
+
+# t,q = fatora(340)
+# print(talvez_primo(3,341,340,t,q))
 
 # print(mdc_estendido(13,2))
 # print(pow(5,1024))
