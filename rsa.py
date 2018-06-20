@@ -38,18 +38,22 @@ def fatora(n):#usado para fatorar um n-1 em potencia de dois em miller
 def talvez_primo(a,n,n1,t,q):
     x=exp_rapida(a,q,n)
     if x==1 or x==-1:
-        return 1
+        return 1 ## nao sei
     while(t>0):
         x = x*x%n
         if x==n1:
-            return 1
+            return 1 ##nao sei
         t-=1
-    return 0
+    return 0 ##composto
 
 
 def provavelmente_primo(iter, n):
+    t,q = fatora(n)
     for i in range(0,iter):
-        print(randint(2,n-1))
+        print(talvez_primo(randint(2,n-1),n,n-1,t,q))
+
+
+provavelmente_primo(20,341)
 
 
 
