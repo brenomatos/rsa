@@ -16,9 +16,9 @@ def mdc_estendido(a,b):
     if r==0:
         return(0,1)
     x,y = mdc_estendido(b,r)
-    return (y,x-r*y)
+    return (y,x-(a//b)*y)
 
 
-print(mdc_estendido(4,5))
+print(mdc_estendido(13,2))
 # print(pow(5,1024))
 # print(exp_rapida(5,1024,2))
