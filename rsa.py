@@ -36,13 +36,13 @@ def fatora(n):#usado para fatorar um n-1 em potencia de dois em miller
 def miller(a,n,n1,t,q):
     x=exp_rapida(a,q,n)
     if x==1 or x==-1:
-        return "Nao sei"
+        return 1
     while(t>0):
         x = x*x%n
         if x==n1:
-            return "Nao sei"
+            return 1
         t-=1
-    return "composto"
+    return 0
 
 t,q = fatora(340)
 print(miller(3,341,340,t,q))
