@@ -30,21 +30,22 @@ def fatora(n):#usado para fatorar um n-1 em potencia de dois em miller
             n/=atual
         atual+=1
 
-    return (t,int(n))#retorna o o numero fatorado em base 2 x parte prima
+    q = int(n) #apenas para padronizar as variaveis
+    return (t,q)#retorna o o numero fatorado em base 2 x parte prima
 
-def miller(a,n):
+def miller(a,n,n1,t,q):
     x=exp_rapida(a,q,n)
     if x==1 or x==-1:
         return "Nao sei"
     while(t>0):
         x = x*x%n
-        if x==n-1:
+        if x==n1:
             return "Nao sei"
         t-=1
     return "composto"
 
-
-print(fatora(320))
+t,q = fatora(340)
+print(miller(3,341,340,t,q))
 
 
 
