@@ -48,26 +48,26 @@ def talvez_primo(a,n,n1,t,q):
 
 
 def provavelmente_primo(iter, n):
-    t,q = fatora(n)
+    t,q = fatora(n-1)
     for i in range(0,iter):
-        print(talvez_primo(randint(2,n-1),n,n-1,t,q))
+        x = talvez_primo(randint(2,n-1),n,n-1,t,q)
+        if x == 1 or x == -1:
+            return "prov primo"
 
+    return "composto"
 
 
 
 def inv_modular(a,n):
     g,x,y = mdc_estendido(a,n)
     if g!=1:
-        print("nao existe")
+        return 0
     else:
-        print(x%n)
+        return x%n
 
 
-inv_modular(3, 73714876143)
 
-# t,q = fatora(340)
-# print(talvez_primo(3,341,340,t,q))
-
+print(provavelmente_primo(20,13))
 # print(mdc_estendido(13,2))
 # print(pow(5,1024))
 # print(exp_rapida(5,1024,2))
