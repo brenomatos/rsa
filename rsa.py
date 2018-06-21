@@ -16,9 +16,9 @@ def exp_rapida(b,e,n):
 def mdc_estendido(a,b):
     r=a%b
     if r==0:
-        return(0,1)
-    x,y = mdc_estendido(b,r)
-    return (y,x-(a//b)*y)
+        return(b,0,1)
+    g,x,y = mdc_estendido(b,r)
+    return (g,y,x-(a//b)*y)
 
 
 def fatora(n):#usado para fatorar um n-1 em potencia de dois em miller
@@ -53,12 +53,17 @@ def provavelmente_primo(iter, n):
         print(talvez_primo(randint(2,n-1),n,n-1,t,q))
 
 
-provavelmente_primo(20,341)
 
 
+def inv_modular(a,n):
+    g,x,y = mdc_estendido(a,n)
+    if g!=1:
+        print("nao existe")
+    else:
+        print(x%n)
 
 
-
+inv_modular(3, 73714876143)
 
 # t,q = fatora(340)
 # print(talvez_primo(3,341,340,t,q))
