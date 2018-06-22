@@ -29,23 +29,23 @@ def inv_modular(a,n):
 
 def fatora(n):#usado para fatorar um n-1 em potencia de dois em miller
     atual = 2
-    contador = 0
     t=0
     while atual*atual <= n:
         while(n%atual == 0):
             if atual == 2:
                 t+=1
             n/=atual
-        atual+=1
+        break
 
     q = int(n) #apenas para padronizar as variaveis
     return (t,q)#retorna o o numero fatorado em base 2 x parte prima
 
+
 def talvez_primo(a,n,n1,t,q):
     x=exp_rapida(a,q,n)
-    if x==1 or x==-1:
+    if x==1 or x==n1:
         return 1 ## nao sei
-    while((t-1)>0):
+    while((t)>0):
         x = (x*x)%n
         if x==n1:
             return 1 ##nao sei
@@ -57,16 +57,18 @@ def provavelmente_primo(iter, n):
     t,q = fatora(n-1)
     for i in range(0,iter):
         x = talvez_primo(randint(2,n-1),n,n-1,t,q)
-        if x == 1:
-            return "prov primo"
-
-    return "composto"
+        if x == 0: return "composto"
+    return "prov primo"
 
 
-
-
-
-print(provavelmente_primo(10,17330749))
+# t,q = fatora(17330748)
+# print(talvez_primo(3,17330749,17330748,t,q))
+# print(provavelmente_primo(10,17330749))
 # print(mdc_estendido(13,2))
 # print(pow(5,1024))
 # print(exp_rapida(5,1024,2))
+# for j in range(0,25):
+# 	a = input().split(" ")
+# 	for i in range(0,4):
+# 		print(provavelmente_primo(20,int(a[i])))
+print(provavelmente_primo(20,1023142342342342342340000345435543535345345345345345408))
