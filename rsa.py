@@ -1,5 +1,6 @@
 from random import randint
 
+#https://medium.com/@prudywsh/how-to-generate-big-prime-numbers-miller-rabin-49e6e6af32fb
 def exp_rapida(b,e,n):
     r = 1
     b = b%n
@@ -57,8 +58,20 @@ def provavelmente_primo(iter, n):
     t,q = fatora(n-1)
     for i in range(0,iter):
         x = talvez_primo(randint(2,n-1),n,n-1,t,q)
-        if x == 0: return "composto"
-    return "prov primo"
+        if x == 0: return 0 ## composto
+    return 1##prov primo
+
+
+print(2**100)
+def primo_aleatorio(b):
+	while(1):
+		prov_primo = randint(2,2**b)
+		flag = provavelmente_primo(1, prov_primo)
+		if flag == 1:
+			return prov_primo
+		
+print(primo_aleatorio(90))
+
 
 
 # t,q = fatora(17330748)
@@ -71,4 +84,3 @@ def provavelmente_primo(iter, n):
 # 	a = input().split(" ")
 # 	for i in range(0,4):
 # 		print(provavelmente_primo(20,int(a[i])))
-print(provavelmente_primo(20,1023142342342342342340000345435543535345345345345345408))
