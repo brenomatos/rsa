@@ -28,19 +28,6 @@ def inv_modular(a,n):
     else:
         return x%n
 
-def fatora(n):#usado para fatorar um n-1 em potencia de dois em miller
-    atual = 2
-    t=0
-    while atual*atual <= n:
-        while(n%atual == 0):
-            if atual == 2:
-                t+=1
-            n/=atual
-        break
-
-    q = int(n) #apenas para padronizar as variaveis
-    return (t,q)#retorna o o numero fatorado em base 2 x parte prima
-
 
 def talvez_primo(a,n,n1,t,q):
     x=exp_rapida(a,q,n)
@@ -67,11 +54,12 @@ def provavelmente_primo(iter, n):
 
 
 def primo_aleatorio(b):
-	while(1):
-		prov_primo = randint(2,2**b)
-		flag = provavelmente_primo(1, prov_primo)
-		if flag == 1:
-			return prov_primo
+    while(1):
+        prov_primo = randint(2,2**b)
+        prov_primo |= ((1 << b - 1) | 1)
+        flag = provavelmente_primo(1, prov_primo)
+        if flag == 1:
+            return prov_primo
 
 print(primo_aleatorio(2048))
 
