@@ -57,7 +57,7 @@ def primo_aleatorio(b):
     while(1):
         prov_primo = randint(2,2**b)
         prov_primo |= ((1 << b - 1) | 1)
-        flag = provavelmente_primo(1, prov_primo)
+        flag = provavelmente_primo(20, prov_primo)
         if flag == 1:
             return prov_primo
 
@@ -68,6 +68,14 @@ def acha_e(p,q):
         g,x,y = mdc_estendido(i, phi)
         if(g==1): return i;
 
+def acha_d(p,q,e):
+    phi = (p-1)*(q-1)
+    i = e
+    while(1):
+        g,x,y = mdc_estendido(i, phi)
+        if(g==1): return i;
+        i-=1
+
 
 p = primo_aleatorio(2048)
 print("Numero p:" + str(p))
@@ -76,9 +84,9 @@ print("Numero q:" + str(q))
 n = p*q
 print("Numer n:"+str(n))
 
-
-
-print(acha_e(p,q))
+e = acha_e(p,q)
+print(e)
+print(acha_d(p,q,e))
 # t,q = fatora(17330748)
 # print(talvez_primo(3,17330749,17330748,t,q))
 # print(provavelmente_primo(10,17330749))
