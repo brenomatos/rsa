@@ -61,10 +61,24 @@ def primo_aleatorio(b):
         if flag == 1:
             return prov_primo
 
-print(primo_aleatorio(2048))
+def acha_e(p,q):
+    phi = (p-1)*(q-1)
+    i = 65537
+    while(1):
+        g,x,y = mdc_estendido(i, phi)
+        if(g==1): return i;
+
+
+p = primo_aleatorio(2048)
+print("Numero p:" + str(p))
+q = primo_aleatorio(2048)
+print("Numero q:" + str(q))
+n = p*q
+print("Numer n:"+str(n))
 
 
 
+print(acha_e(p,q))
 # t,q = fatora(17330748)
 # print(talvez_primo(3,17330749,17330748,t,q))
 # print(provavelmente_primo(10,17330749))
