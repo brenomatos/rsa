@@ -93,9 +93,9 @@ def descriptografa(C,n,d):
 
 
 print("POTENCIA: "+str(exp_rapida(450,768,517)))
-p = primo_aleatorio(30)
+p = primo_aleatorio(2048)
 print("Numero p:" + str(p))
-q = primo_aleatorio(30)
+q = primo_aleatorio(2048)
 print("Numero q:" + str(q))
 n = p*q
 print("Numero n:"+str(n))
@@ -106,7 +106,7 @@ print("Inversos\n")
 print(d,e,(p-1)*(q-1))
 print((d*e) % ((p-1)*(q-1)))#conferir se eh o inv modular mesmo
 
-mensagem = "casasba"
+mensagem = "casasbaasasasasassa"
 print(mensagem)
 M = codifica(mensagem)
 print('M ' + str(M))
