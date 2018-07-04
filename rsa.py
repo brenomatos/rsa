@@ -1,6 +1,5 @@
 from random import randint
 
-#https://medium.com/@prudywsh/how-to-generate-big-prime-numbers-miller-rabin-49e6e6af32fb
 def exp_rapida(b,e,n):
     r = 1
     b = b%n
@@ -86,6 +85,14 @@ def decodifica(n):
 
 	return str
 
+def criptografa(M,n,e):
+	return exp_rapida(M,e,n)
+
+def descriptografa(C,n,d):
+	return exp_rapida(C,d,n)
+
+
+print("POTENCIA: "+str(exp_rapida(450,768,517)))
 p = primo_aleatorio(30)
 print("Numero p:" + str(p))
 q = primo_aleatorio(30)
@@ -95,12 +102,17 @@ print("Numero n:"+str(n))
 
 e = acha_e(p,q)
 d = acha_d(e,p,q)
-print("Inversos\n\n")
+print("Inversos\n")
 print(d,e,(p-1)*(q-1))
-
-str = "breno"
-cleiton = codifica(str)
-print(cleiton)
-print(decodifica(cleiton))
-
 print((d*e) % ((p-1)*(q-1)))#conferir se eh o inv modular mesmo
+
+mensagem = "casasba"
+print(mensagem)
+M = codifica(mensagem)
+print('M ' + str(M))
+msg_cript = criptografa(M,n,e)
+print("msg criptografada: " + str(msg_cript))
+msg_descrip = descriptografa(msg_cript,n,d)
+print(msg_descrip)
+descod = decodifica(msg_descrip)
+print(descod)
