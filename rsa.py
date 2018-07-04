@@ -68,32 +68,39 @@ def acha_e(p,q):
         g,x,y = mdc_estendido(i, phi)
         if(g==1): return i;
 
-def acha_d(p,q,e):
-    phi = (p-1)*(q-1)
-    i = e
-    while(1):
-        g,x,y = mdc_estendido(i, phi)
-        if(g==1): return i;
-        i-=1
+def acha_d(e,p,q):
+    return inv_modular(e,(p-1)*(q-1))
 
 
-p = primo_aleatorio(2048)
+def codifica(str):
+	r = 0
+	for i in range(0,len(str)):
+		r = r+ord(str[i])*pow(256,i)
+	return r
+
+def decodifica(n):
+	str = ""
+	while(n!=0):
+		str += chr(n%256)
+		n //= 256
+
+	return str
+
+p = primo_aleatorio(30)
 print("Numero p:" + str(p))
-q = primo_aleatorio(2048)
+q = primo_aleatorio(30)
 print("Numero q:" + str(q))
 n = p*q
-print("Numer n:"+str(n))
+print("Numero n:"+str(n))
 
 e = acha_e(p,q)
-print(e)
-print(acha_d(p,q,e))
-# t,q = fatora(17330748)
-# print(talvez_primo(3,17330749,17330748,t,q))
-# print(provavelmente_primo(10,17330749))
-# print(mdc_estendido(13,2))
-# print(pow(5,1024))
-# print(exp_rapida(5,1024,2))
-# for j in range(0,25):
-# 	a = input().split(" ")
-# 	for i in range(0,4):
-# 		print(provavelmente_primo(20,int(a[i])))
+d = acha_d(e,p,q)
+print("Inversos\n\n")
+print(d,e,(p-1)*(q-1))
+
+str = "breno"
+cleiton = codifica(str)
+print(cleiton)
+print(decodifica(cleiton))
+
+print((d*e) % ((p-1)*(q-1)))#conferir se eh o inv modular mesmo
