@@ -91,29 +91,50 @@ def criptografa(M,n,e):
 def descriptografa(C,n,d):
 	return exp_rapida(C,d,n)
 
-
+# GERANDO PRIMOS ALEATORIOS
 p = primo_aleatorio(2048)
-# print("Numero p:" + str(p))
 q = primo_aleatorio(2048)
-# print("Numero q:" + str(q))
 n = p*q
-# print("Numero n:"+str(n))
-
+#CALCULADO e E d
 e = acha_e(p,q)
 d = acha_d(e,p,q)
-f = open("salva_dados.txt","w")
-f.write("Numero p:" + str(p))
-f.write("\n\nNumero q:" + str(q))
-f.write("\n\nNumero n:"+str(n))
-f.write("\n\nChave e: "+str(e))
-f.write("\n\nChave d: "+str(d))
-mensagem = "casasbaasasasasassa"
-print(mensagem)
+#Aqui adicionei codigo caso queir inserir os seus proprios primos
+#Entao basta comentar as linhas anteriores
+# p = int(input("\n\nDigite um primo p: "))
+# q = int(input("\n\nDigite um primo q: "))
+# n = p*q
+# e = acha_e(p,q)
+# d = acha_d(e,p,q)
+
+#Caso queirsa salvar informacoes em um arquivo
+# f = open("saida_primos.txt","w")
+# f.write("primo p: "+str(p)+"\n\n\n")
+# f.write("primo q: "+str(q)+"\n\n\n")
+# f.write("numero n = p*q: "+str(p*q)+"\n\n\n")
+# f.write("numero e: "+str(e)+"\n\n\n")
+# f.write("numero d: "+str(d)+"\n\n\n")
+
+print("Numero p:" + str(p)+"\n\n")
+print("Numero q:" + str(q)+"\n\n")
+print("Numero n:"+str(n)+"\n\n")
+print("Chave e: "+str(e)+"\n\n")
+print("Chave d: "+str(d)+"\n\n")
+
+mensagem = str(input('Digite a mensagem a ser criptografada: \n'))
+
+print("Mensagem Pre codificacao: "+str(mensagem)+"\n\n")
+
 M = codifica(mensagem)
-print('M ' + str(M))
+print('Mensagem Codificada: ' + str(M)+"\n\n")
+
 msg_cript = criptografa(M,n,e)
-print("msg criptografada: " + str(msg_cript))
+print("Mensagem Criptografada: " + str(msg_cript)+"\n\n")
+
 msg_descrip = descriptografa(msg_cript,n,d)
-print(msg_descrip)
-descod = decodifica(msg_descrip)
-print(descod)
+print("Mensagem Descriptografada: "+ str(msg_descrip)+"\n\n")
+
+msg_descod = decodifica(msg_descrip)
+print("Mensagem Decodificada: "+str(msg_descod)+"\n\n")
+
+#adicionei uma mensagem de exatos 500 char para eventuais testes
+mensagem = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibu"
